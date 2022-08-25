@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('/assets/css/styles.css') }}">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('/assets/css/dashboard.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('/assets/css/fontawesome.min.css') }}">
+
+    <title>Awesome videos - admin panel</title>
+</head>
+
+<body class="text-center">
+<div class="container-fluid">
+
+{% block adminbar %}
+    {% include 'admin/adminbar.html.twig' %}
+    {% endblock %}
+
+    <div class="row">
+        {% block adminmenu %}
+            {% include 'admin/adminmenu.html.twig' %}
+        {% endblock %}
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2"><a href="{{ path('my_profile') }}">Dashboard</a></h1>
+            </div>
+            {% block customstyles %}
+            {% endblock %}
+{% block main %}
+            {% endblock %}
+        </main>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{{ asset('/assets/js/jquery.js') }}"></script>
+<script src="{{ asset('/assets/js/popper.js') }}"></script>
+<script src="{{ asset('/assets/js/bootstrap.js') }}"></script>
+
+{% block customscripts %}
+<script>
+    $('input[type="file"]').change(function (e) {
+        var fileName = e.target.files[0].name;
+        console.log(e.target.files[0]);
+        $('.custom-file-label').html(fileName);
+    });
+</script>
+{% endblock %}
+</body>
+
+</html>
